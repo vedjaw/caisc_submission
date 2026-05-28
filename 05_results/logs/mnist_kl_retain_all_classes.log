@@ -1,0 +1,174 @@
+$ python run.py --dataset mnist --model resnet18 --forget_type class --forget_class 0 \
+    --checkpoint ./checkpoints/base_mnist_resnet18.pth --data_dir ./data --save_dir ./checkpoints \
+    --epochs 12 --lr 2e-4 --rep_weight 0.03 --kd_weight 3.0 --max_grad_norm 1.0 \
+    --forget_objective kl_retain --forget_gate 0 --retain_budget_factor 4.0
+
+===== MNIST Class 0 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 89.99%
+  Forget Accuracy    (FA) : 1.99%
+  Retain Accuracy    (RA) : 99.82%
+  Unlearning Accuracy(UA) : 98.01%
+  MIA (AUROC)             : 0.5120  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6371
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 1.7%
+  Wall-clock Time         : 334.7s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c0_ep12_lr0.0002.pth
+
+===== MNIST Class 1 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 88.30%
+  Forget Accuracy    (FA) : 5.38%
+  Retain Accuracy    (RA) : 99.87%
+  Unlearning Accuracy(UA) : 94.62%
+  MIA (AUROC)             : 0.6529  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.4820
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 5.7%
+  Wall-clock Time         : 405.7s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c1_ep12_lr0.0002.pth
+
+===== MNIST Class 2 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 89.99%
+  Forget Accuracy    (FA) : 7.67%
+  Retain Accuracy    (RA) : 99.87%
+  Unlearning Accuracy(UA) : 92.33%
+  MIA (AUROC)             : 0.5097  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6865
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 8.1%
+  Wall-clock Time         : 394.6s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c2_ep12_lr0.0002.pth
+
+===== MNIST Class 3 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 90.77%
+  Forget Accuracy    (FA) : 9.28%
+  Retain Accuracy    (RA) : 99.88%
+  Unlearning Accuracy(UA) : 90.72%
+  MIA (AUROC)             : 0.5096  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6288
+  Avg Projection Rate     : 99%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 8.9%
+  Wall-clock Time         : 325.1s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c3_ep12_lr0.0002.pth
+
+===== MNIST Class 4 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 90.68%
+  Forget Accuracy    (FA) : 6.09%
+  Retain Accuracy    (RA) : 99.87%
+  Unlearning Accuracy(UA) : 93.91%
+  MIA (AUROC)             : 0.5113  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6623
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 5.9%
+  Wall-clock Time         : 331.2s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c4_ep12_lr0.0002.pth
+
+===== MNIST Class 5 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 91.24%
+  Forget Accuracy    (FA) : 7.38%
+  Retain Accuracy    (RA) : 99.88%
+  Unlearning Accuracy(UA) : 92.62%
+  MIA (AUROC)             : 0.5213  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6632
+  Avg Projection Rate     : 99%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 7.2%
+  Wall-clock Time         : 516.4s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c5_ep12_lr0.0002.pth
+
+===== MNIST Class 6 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 90.97%
+  Forget Accuracy    (FA) : 7.06%
+  Retain Accuracy    (RA) : 99.85%
+  Unlearning Accuracy(UA) : 92.94%
+  MIA (AUROC)             : 0.4947  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6648
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 6.5%
+  Wall-clock Time         : 423.8s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c6_ep12_lr0.0002.pth
+
+===== MNIST Class 7 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 90.25%
+  Forget Accuracy    (FA) : 8.14%
+  Retain Accuracy    (RA) : 99.90%
+  Unlearning Accuracy(UA) : 91.86%
+  MIA (AUROC)             : 0.5219  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6513
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 7.6%
+  Wall-clock Time         : 321.2s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c7_ep12_lr0.0002.pth
+
+===== MNIST Class 8 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 90.66%
+  Forget Accuracy    (FA) : 9.38%
+  Retain Accuracy    (RA) : 99.84%
+  Unlearning Accuracy(UA) : 90.62%
+  MIA (AUROC)             : 0.5121  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6301
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 9.2%
+  Wall-clock Time         : 382.4s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c8_ep12_lr0.0002.pth
+
+===== MNIST Class 9 =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 90.01%
+  Forget Accuracy    (FA) : 5.31%
+  Retain Accuracy    (RA) : 99.91%
+  Unlearning Accuracy(UA) : 94.69%
+  MIA (AUROC)             : 0.5238  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6954
+  Avg Projection Rate     : 99%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 5.3%
+  Wall-clock Time         : 326.6s
+============================================================
+Saved unlearned model → ./checkpoints/purge_mnist_resnet18_class_c9_ep12_lr0.0002.pth

@@ -1,0 +1,89 @@
+                                                                                                                                                                                                                                                                                                                                                           
+Loading stl10...                                                                                                                                                                     
+  Forget set: 500 | Retain set: 4500                                                                                                                                                 
+  Forget-class test set: 800 samples (for MIA)                                                                                                                                       
+                                                                                                                        
+Loading model: resnet18                                                                                                                          
+  Loaded: ./checkpoints/base_stl10_resnet18.pth                                                                                                  
+                                                                                                                                                 
+=== Before Unlearning ===                                   
+  Test Accuracy: 94.00% (7520/8000)                                                                                     
+  Forget Accuracy (should DROP): 100.00% (500/500)                                        
+  Retain Accuracy (should STAY): 99.09% (4459/4500)                                                                                              
+                                                                                          
+============================================================                              
+ PURGE: Projected Unlearning via Retain-Guided Erasure                                    
+============================================================                                                            
+  Monitor layers : ['layer3', 'layer4', 'avgpool']                                                                                               
+  Epochs         : 15                                                                                                                                                                                                                            
+  LR             : 0.0005                                                                                                                                                                                                                        
+  Rep weight (λ) : 0.05                                                                   
+  KD weight  (β) : 2.0                                                                    
+  Temperature    : 4.0                                                  
+  Forget obj.    : kl_retain                                                                                                                     
+  Forget gate    : 0.0                                                                    
+  Computing retain confusion distribution...                                                                                                                                                                                                                                                      
+  Retain confusion dist: [0.0025222315452992916, 0.11104543507099152, 0.11261635273694992, 0.10875812917947769, 0.11140204966068268]... (top-5 of 10 classes)                                                                                    
+  Initial retain loss : 0.0331                                                            
+  Retain loss budget  : 0.1655 (5.0×)                                                     
+  Epoch 1/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:04<00:00,  1.04s/it, F=0.009, G=0/4, R=0.066]                                                                                
+  → Forget CE: 0.0054 | Retain: 0.0305 | Rep: 0.5725 | Proj: 75% | Gate: 0% | FA: 100.0%                                                                                                                                                         
+  Epoch 2/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:14<00:00,  3.69s/it, F=0.013, G=0/4, R=0.069]                                                                                
+  → Forget CE: 0.0067 | Retain: 0.0327 | Rep: 0.5359 | Proj: 100% | Gate: 0% | FA: 100.0%                                                                                            
+  Epoch 3/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:09<00:00,  2.38s/it, F=0.024, G=0/4, R=0.071]                    
+  → Forget CE: 0.0183 | Retain: 0.0306 | Rep: 0.4912 | Proj: 100% | Gate: 0% | FA: 99.6%                                                                                                                                                         
+  Epoch 4/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:07<00:00,  1.94s/it, F=0.074, G=0/4, R=0.173]                                                                                
+  → Forget CE: 0.0473 | Retain: 0.0327 | Rep: 0.4317 | Proj: 100% | Gate: 0% | FA: 98.6%                                                                                                                                                         
+  Epoch 5/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:05<00:00,  1.25s/it, F=0.202, G=0/4, R=0.168]                                                                                
+  → Forget CE: 0.1207 | Retain: 0.0325 | Rep: 0.3934 | Proj: 100% | Gate: 0% | FA: 94.0%                                                                                                                                                         
+  Epoch 6/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:04<00:00,  1.04s/it, F=0.284, G=0/4, R=0.279]                                                                                
+  → Forget CE: 0.2090 | Retain: 0.0294 | Rep: 0.3555 | Proj: 100% | Gate: 0% | FA: 87.4%                                                                                                                                                         
+  Epoch 7/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:03<00:00,  1.31it/s, F=0.508, G=0/4, R=0.334]                                                                                
+  → Forget CE: 0.4358 | Retain: 0.0371 | Rep: 0.3278 | Proj: 100% | Gate: 0% | FA: 77.6%                                                                                             
+  Epoch 8/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:02<00:00,  1.41it/s, F=1.050, G=0/4, R=0.447]                                                                                
+  → Forget CE: 0.7938 | Retain: 0.0353 | Rep: 0.3048 | Proj: 100% | Gate: 0% | FA: 63.8%                                                                                                                                                         
+  Epoch 9/15: 100%|███████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:05<00:00,  1.35s/it, F=1.361, G=0/4, R=0.504]                                                                                
+  → Forget CE: 1.1955 | Retain: 0.0351 | Rep: 0.2916 | Proj: 100% | Gate: 0% | FA: 41.4%                                                                                                                                                         
+  Epoch 10/15: 100%|██████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:03<00:00,  1.14it/s, F=1.974, G=0/4, R=0.654]                                                                                
+  → Forget CE: 1.7376 | Retain: 0.0365 | Rep: 0.2725 | Proj: 100% | Gate: 0% | FA: 26.2%                                                                                                                                                         
+  Epoch 11/15: 100%|██████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:02<00:00,  1.52it/s, F=2.503, G=0/4, R=0.974]                                                                                
+  → Forget CE: 2.2232 | Retain: 0.0425 | Rep: 0.2497 | Proj: 100% | Gate: 0% | FA: 17.6%                                                                                                                                                         
+  Epoch 12/15: 100%|██████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:02<00:00,  1.52it/s, F=2.857, G=0/4, R=0.990]                                                                                
+  → Forget CE: 2.6842 | Retain: 0.0484 | Rep: 0.2460 | Proj: 100% | Gate: 0% | FA: 8.6%                                                                                                                                                          
+  ✓ FA 8.6% ≤ target 10.0% — forgetting complete, will stop.                                                            
+  FA target reached — stopping at epoch 12.                                                                             
+
+  Unlearning completed in 193.9s                                                                                        
+
+=== After PURGE Unlearning ===                                                                                          
+  Test Accuracy  (TA): 84.95% (6796/8000)                                                                               
+  Forget Accuracy (FA — want LOW): 8.80% (44/500)                                                                       
+  Retain Accuracy (RA — want HIGH): 99.07% (4458/4500)                                                                  
+
+  Unlearning Accuracy (UA = 100−FA): 91.20%                                                                             
+
+=== Membership Inference Attack ===                                                                                     
+  MIA (loss AUROC) : 0.5423                                                                                             
+  MIA (conf AUROC) : 0.4158                                                                                             
+  MIA (average)    : 0.4791  (target ≈ 0.5)                                                                             
+  (forget-class train vs forget-class test, 500 vs 500 samples)                                                         
+
+=== Representation-Level Verification ===                                                                               
+  Feature cosine sim : 0.7566  (lower = more erased)                                                                    
+  Feature L2 dist    : 18.0498  (higher = more erased)                                                                  
+
+============================================================                                                            
+ PURGE — Results Summary                                                                                                
+============================================================                                                            
+  Test Accuracy      (TA) : 84.95%                                                                                      
+  Forget Accuracy    (FA) : 8.80%                                                                                       
+  Retain Accuracy    (RA) : 99.07%                                                                                      
+  Unlearning Accuracy(UA) : 91.20%                                                                                      
+  MIA (AUROC)             : 0.4791  (target ≈ 0.5)                                                                      
+  Feature Cosine Sim      : 0.7566                                                                                      
+  Avg Projection Rate     : 98%                                                                                         
+  Avg Gate Rate           : 0%                                                                                          
+  Final Epoch FA          : 8.6%                                                                                        
+  Wall-clock Time         : 193.9s                                                                                      
+============================================================                                                            
+

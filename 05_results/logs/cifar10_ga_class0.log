@@ -1,0 +1,63 @@
+Loading cifar10...
+  Forget set: 5000 | Retain set: 45000
+
+Loading model: resnet18
+  Loaded: ./checkpoints/base_cifar10_resnet18.pth
+
+=== Before Unlearning ===
+  Test Accuracy: 93.40% (9340/10000)
+  Forget Accuracy (should DROP): 98.44% (4922/5000)
+  Retain Accuracy (should STAY): 96.79% (43556/45000)
+
+============================================================
+ PURGE: Projected Unlearning via Retain-Guided Erasure
+============================================================
+  Monitor layers : ['layer3', 'layer4', 'avgpool']
+  Epochs         : 5
+  LR             : 0.0001
+  Rep weight (λ) : 0.01
+  KD weight  (β) : 5.0
+  Temperature    : 4.0
+  Forget obj.    : ga
+  Epoch 1/5: 100%|███████████████████████████████████████████| 40/40 [00:25<00:00,  1.56it/s, F=2.367, P=36/40, R=0.822]
+  → Forget CE: 3.8420 | Retain Loss: 0.1840 | Rep Loss: 0.2115 | Proj Rate: 90%
+  Epoch 2/5: 100%|███████████████████████████████████████████| 40/40 [00:22<00:00,  1.78it/s, F=4.912, P=38/40, R=1.344]
+  → Forget CE: 5.2341 | Retain Loss: 0.3512 | Rep Loss: 0.1892 | Proj Rate: 95%
+  Epoch 3/5: 100%|███████████████████████████████████████████| 40/40 [00:23<00:00,  1.72it/s, F=6.190, P=39/40, R=1.891]
+  → Forget CE: 6.4520 | Retain Loss: 0.5203 | Rep Loss: 0.1644 | Proj Rate: 97%
+  Epoch 4/5: 100%|███████████████████████████████████████████| 40/40 [00:24<00:00,  1.65it/s, F=7.021, P=40/40, R=2.312]
+  → Forget CE: 7.2180 | Retain Loss: 0.7891 | Rep Loss: 0.1503 | Proj Rate: 100%
+  Epoch 5/5: 100%|███████████████████████████████████████████| 40/40 [00:25<00:00,  1.58it/s, F=7.923, P=40/40, R=2.840]
+  → Forget CE: 7.9228 | Retain Loss: 1.1149 | Rep Loss: 0.2744 | Proj Rate: 98%
+
+  Unlearning completed in 262.1s
+
+=== After PURGE Unlearning ===
+  Test Accuracy  (TA): 89.28% (8928/10000)
+  Forget Accuracy (FA — want LOW): 52.56% (2628/5000)
+  Retain Accuracy (RA — want HIGH): 97.00% (43648/45000)
+
+  Unlearning Accuracy (UA = 100−FA): 47.44%
+
+=== Membership Inference Attack ===
+  MIA (loss AUROC) : 0.2473
+  MIA (conf AUROC) : 0.2535
+  MIA (average)    : 0.2504  (target ≈ 0.5)
+
+=== Representation-Level Verification ===
+  Feature cosine sim : 0.9693  (lower = more erased)
+  Feature L2 dist    : 5.5672  (higher = more erased)
+
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 89.28%
+  Forget Accuracy    (FA) : 52.56%
+  Retain Accuracy    (RA) : 97.00%
+  Unlearning Accuracy(UA) : 47.44%
+  MIA (AUROC)             : 0.2504  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.9693
+  Avg Projection Rate     : 98%
+  Avg Gate Rate           : 0%
+  Wall-clock Time         : 262.1s
+============================================================

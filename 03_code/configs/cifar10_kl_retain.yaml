@@ -1,0 +1,27 @@
+# main config for cifar10 experiments using kl_retain
+dataset: cifar10
+model: resnet18
+forget_type: class
+forget_class: 0 # class 0 by default, testing other classes in bash scripts
+
+epochs: 15
+lr: 5e-4
+batch_size: 128 # at batch_size of 256 it was going Out of Memory on 16GB GPUs
+weight_decay: 5e-4
+
+# our method's hyperparameters
+forget_objective: kl_retain
+rep_weight: 0.05       # lambda for representation erasure
+kd_weight: 2.0         # beta anchoring 
+temperature: 4.0       
+max_grad_norm: 1.0
+
+# stopping
+forget_gate: 0         # kept at 0 for these runs as gate was unstable
+retain_budget_factor: 5.0
+fa_target: null        # relies on random chance baseline
+fa_check_freq: 50      # check FA every 50 batches approx
+
+data_dir: ./data
+save_dir: ./checkpoints
+checkpoint: ./checkpoints/base_cifar10_resnet18.pth

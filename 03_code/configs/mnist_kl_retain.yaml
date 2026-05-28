@@ -1,0 +1,28 @@
+# MNIST Configuration Profile
+# Empirical baseline: avg TA=90.19%, FA=6.77%, RA=99.87%
+dataset: mnist
+model: resnet18
+forget_type: class
+forget_class: 0       # defaulting to digit 0
+
+epochs: 12
+lr: 2e-4              # 2e-4 works best, tried higher but too aggressive
+batch_size: 128
+weight_decay: 5e-4
+
+# purge parameters
+forget_objective: kl_retain
+rep_weight: 0.03      # lambda -- keeping this low (0.03) since higher values made things unstable
+kd_weight: 3.0        # beta
+temperature: 4.0      
+max_grad_norm: 1.0    
+
+# stopping conditions
+forget_gate: 0        
+retain_budget_factor: 4.0
+fa_target: 10.0       # 10% is random chance for 10 digits
+fa_check_freq: 50     
+
+data_dir: ./data
+save_dir: ./checkpoints
+checkpoint: ./checkpoints/base_mnist_resnet18.pth

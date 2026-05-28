@@ -1,0 +1,16 @@
+Ablation,Dataset,Forget Class,Test Acc (%),Forget Acc (%),Retain Acc (%),MIA AUROC,Projection Rate (%),Gate Rate (%),Notes
+Full PURGE (kl_retain),CIFAR-10,0,84.47,8.38,96.31,0.496,100,0,All components enabled — best config
+GA objective,CIFAR-10,0,89.28,52.56,97.00,0.250,98,0,forget_objective=ga; FA too high — under-forgets
+GA objective (longer),CIFAR-10,0,88.31,47.26,97.12,0.501,87,65,GA 20 epochs; FA stuck at 47% — under-forgets; hard entropy cap fires 65% of steps meaning CE hits ceiling but model doesn't actually forget
+KL-uniform objective,CIFAR-10,0,83.84,12.02,93.87,0.469,100,0,forget_objective=kl_uniform; FA above random chance (12%); retain budget exceeded at epoch 7; RA drops more than kl_retain
+No intra-epoch stopping,PathMNIST,0,72.65,0.00,96.75,0.001,95,0,FA jumped from 99.8% to 0% in 1 epoch
+With intra-epoch stopping,PathMNIST,0,74.35,7.28,98.45,0.545,100,0,Stopped at batch 10 of epoch 2 — controlled
+With entropy-based gating,CIFAR-10,0,89.06,58.64,96.16,0.262,0,98,forget_gate=0.9; gate fires too often — under-forgets
+No gating,CIFAR-10,0,84.47,8.38,96.31,0.496,100,0,forget_gate=0; better balance
+Low KD weight (beta=1.0),CIFAR-10,0,83.90,7.66,95.87,0.504,99,0,kd_weight=1.0; FA reaches target but RA slightly lower than beta=2.0 (95.87 vs 95.92); marginal difference — beta=2.0 preferred for robustness
+High KD weight (beta=2.0),CIFAR-10,0,84.47,8.38,96.31,0.496,100,0,Stronger anchoring — preserves TA better
+BN unfrozen (train mode),CIFAR-10,0,82.18,8.22,94.08,0.505,78,0,BN in train mode during unlearning; TA and RA degrade vs frozen BN (82.18 vs 84.47 TA; 94.08 vs 96.31 RA); BN freeze is necessary for stable retain accuracy
+High LR (5e-4) with GA,CIFAR-10,0,88.47,49.06,96.96,0.503,97,57,GA at lr=5e-4 with full PURGE stack; FA stuck at 49% — GA under-forgets even at higher LR; projection and KD prevent collapse but cannot fix GA's under-forgetting
+Low LR (1e-4) with GA,CIFAR-10,0,89.28,52.56,97.00,0.250,98,0,Moderate forgetting but FA still too high
+PathMNIST low LR (2e-4),PathMNIST,0,74.35,7.28,98.45,0.545,100,0,Good balance for PathMNIST
+PathMNIST high LR (5e-4),PathMNIST,0,72.65,0.00,96.75,0.001,95,0,Too aggressive — overshoot in 1 epoch

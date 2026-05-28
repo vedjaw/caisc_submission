@@ -1,0 +1,60 @@
+Loading cifar10...
+  Forget set: 5000 | Retain set: 45000
+
+Loading model: resnet18
+  Loaded: ./checkpoints/base_cifar10_resnet18.pth
+
+=== Before Unlearning ===
+  Test Accuracy: 93.40% (9340/10000)
+  Forget Accuracy (should DROP): 98.44% (4922/5000)
+  Retain Accuracy (should STAY): 96.79% (43556/45000)
+
+============================================================
+ PURGE: Projected Unlearning via Retain-Guided Erasure
+============================================================
+  Monitor layers : ['layer3', 'layer4', 'avgpool']
+  Epochs         : 10
+  LR             : 0.0005
+  Rep weight (λ) : 0.1
+  KD weight  (β) : 1.0
+  Temperature    : 4.0
+  Forget obj.    : ga
+
+  [NOTE: This run demonstrates catastrophic failure with aggressive GA settings]
+
+  → Forget CE: 195.2891 | Retain Loss: 122.3527 | Rep Loss: 0.5653 | Proj Rate: 100%
+
+  Unlearning completed in 262.1s
+
+=== After PURGE Unlearning ===
+  Test Accuracy  (TA): 21.56% (2156/10000)
+  Forget Accuracy (FA — want LOW): 0.00% (0/5000)
+  Retain Accuracy (RA — want HIGH): 23.95% (10779/45000)
+
+  Unlearning Accuracy (UA = 100−FA): 100.00%
+
+=== Membership Inference Attack ===
+  MIA (loss-based) : 0.1667
+  MIA (conf-based) : 0.6667
+  MIA (average)    : 0.4167  (target ≈ 0.5)
+
+=== Representation-Level Verification ===
+  Feature cosine sim : 0.6462  (lower = more erased)
+  Feature L2 dist    : 22.8085  (higher = more erased)
+
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 21.56%
+  Forget Accuracy    (FA) : 0.00%
+  Retain Accuracy    (RA) : 23.95%
+  Unlearning Accuracy(UA) : 100.00%
+  MIA (AUROC)             : 0.4167  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6462
+  Avg Projection Rate     : 100%
+  Wall-clock Time         : 262.1s
+============================================================
+
+  ANALYSIS: Model destroyed — Forget CE exploded to 195 (normal is ~0.1-2.0).
+  LR=5e-4 with GA was too aggressive. This failure case motivated the entropy
+  cap, kl_retain objective, and self-regulating stopping criteria.

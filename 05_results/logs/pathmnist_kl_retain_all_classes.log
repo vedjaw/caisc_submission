@@ -1,0 +1,157 @@
+$ python run.py --dataset pathmnist --model resnet18 --forget_type class --forget_class {0..8} \
+    --checkpoint ./checkpoints/base_pathmnist_resnet18.pth --data_dir ./data --save_dir ./checkpoints \
+    --epochs 15 --lr 2e-4 --rep_weight 0.05 --kd_weight 5.0 --max_grad_norm 1.0 \
+    --forget_objective kl_retain --forget_gate 0 --retain_budget_factor 5.0
+
+===== PathMNIST Class 0 (Adipose) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 74.35%
+  Forget Accuracy    (FA) : 7.28%
+  Retain Accuracy    (RA) : 98.45%
+  Unlearning Accuracy(UA) : 92.72%
+  MIA (AUROC)             : 0.5453  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.7440
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 7.5%
+  Wall-clock Time         : 393.1s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c0_ep15_lr0.0002.pth
+
+===== PathMNIST Class 1 (Background) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 79.35%
+  Forget Accuracy    (FA) : 9.85%
+  Retain Accuracy    (RA) : 98.33%
+  Unlearning Accuracy(UA) : 90.15%
+  MIA (AUROC)             : 0.6144  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6916
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 9.9%
+  Wall-clock Time         : 314.9s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c1_ep15_lr0.0002.pth
+
+===== PathMNIST Class 2 (Debris) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 89.30%
+  Forget Accuracy    (FA) : 9.47%
+  Retain Accuracy    (RA) : 98.93%
+  Unlearning Accuracy(UA) : 90.53%
+  MIA (AUROC)             : 0.3687  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6349
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 9.3%
+  Wall-clock Time         : 363.6s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c2_ep15_lr0.0002.pth
+
+===== PathMNIST Class 3 (Lymphocytes) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 83.20%
+  Forget Accuracy    (FA) : 10.58%
+  Retain Accuracy    (RA) : 99.00%
+  Unlearning Accuracy(UA) : 89.42%
+  MIA (AUROC)             : 0.4252  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6009
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 10.7%
+  Wall-clock Time         : 254.6s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c3_ep15_lr0.0002.pth
+
+===== PathMNIST Class 4 (Mucus) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 77.49%
+  Forget Accuracy    (FA) : 9.44%
+  Retain Accuracy    (RA) : 98.53%
+  Unlearning Accuracy(UA) : 90.56%
+  MIA (AUROC)             : 0.5166  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.6745
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 9.1%
+  Wall-clock Time         : 336.6s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c4_ep15_lr0.0002.pth
+
+===== PathMNIST Class 5 (Smooth Muscle) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 84.36%
+  Forget Accuracy    (FA) : 9.45%
+  Retain Accuracy    (RA) : 98.55%
+  Unlearning Accuracy(UA) : 90.55%
+  MIA (AUROC)             : 0.5014  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.7211
+  Avg Projection Rate     : 100%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 9.1%
+  Wall-clock Time         : 356.4s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c5_ep15_lr0.0002.pth
+
+===== PathMNIST Class 6 (Normal Mucosa) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 80.93%
+  Forget Accuracy    (FA) : 9.87%
+  Retain Accuracy    (RA) : 98.81%
+  Unlearning Accuracy(UA) : 90.13%
+  MIA (AUROC)             : 0.5935  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.7541
+  Avg Projection Rate     : 99%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 9.7%
+  Wall-clock Time         : 337.9s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c6_ep15_lr0.0002.pth
+
+===== PathMNIST Class 7 (Stroma) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 87.16%
+  Forget Accuracy    (FA) : 10.71%
+  Retain Accuracy    (RA) : 99.39%
+  Unlearning Accuracy(UA) : 89.29%
+  MIA (AUROC)             : 0.5208  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.5938
+  Avg Projection Rate     : 99%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 10.7%
+  Wall-clock Time         : 370.5s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c7_ep15_lr0.0002.pth
+
+===== PathMNIST Class 8 (Epithelium) =====
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 75.96%
+  Forget Accuracy    (FA) : 7.12%
+  Retain Accuracy    (RA) : 98.74%
+  Unlearning Accuracy(UA) : 92.88%
+  MIA (AUROC)             : 0.5567  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.5736
+  Avg Projection Rate     : 99%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 7.4%
+  Wall-clock Time         : 405.5s
+============================================================
+Saved unlearned model → ./checkpoints/purge_pathmnist_resnet18_class_c8_ep15_lr0.0002.pth

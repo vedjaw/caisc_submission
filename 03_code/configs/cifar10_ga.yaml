@@ -1,0 +1,27 @@
+# CIFAR-10 baseline using standard GA
+dataset: cifar10
+model: resnet18  
+forget_type: class
+forget_class: 0
+
+epochs: 10
+lr: 5e-4 # Tried 1e-3 but loss was exploding
+batch_size: 128
+weight_decay: 5e-4
+
+# purge params
+forget_objective: ga
+rep_weight: 0.1        # lambda
+kd_weight: 1.0         # beta 
+temperature: 4.0       
+max_grad_norm: 5.0     # gradient clipping to prevent nans
+
+# stopping criteria
+forget_gate: 0.9       
+retain_budget_factor: 5.0
+fa_target: null
+fa_check_freq: 50
+
+data_dir: ./data
+save_dir: ./checkpoints
+checkpoint: ./checkpoints/base_cifar10_resnet18.pth

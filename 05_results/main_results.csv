@@ -1,0 +1,35 @@
+Method,Dataset,Forget Class,Test Acc (%),Forget Acc (%),Retain Acc (%),Unlearn Acc (%),MIA AUROC,Notes
+Retrain (gold standard),CIFAR-10,0,92.47,0.00,100.00,100.00,0.500,Published (SalUn Table A2)
+FT (Fine-Tuning),CIFAR-10,0,94.78,68.31,99.92,31.69,N/A,Published (SalUn Table A2) — MIA not reported by authors
+GA (Gradient Ascent),CIFAR-10,0,38.18,0.09,38.92,99.91,N/A,Published (SalUn Table A2) — catastrophic retain damage; MIA not reported
+RL (Random Labels),CIFAR-10,0,94.52,10.67,99.92,89.33,N/A,Published (SalUn Table A2) — MIA not reported by authors
+IU (Influence Unlearning),CIFAR-10,0,89.10,2.98,94.78,97.02,N/A,Published (SalUn Table A2) — MIA not reported by authors
+BE (Boundary Expand),CIFAR-10,0,91.88,20.87,97.71,79.13,N/A,Published (SalUn Table A2) — MIA not reported by authors
+BS (Boundary Shrink),CIFAR-10,0,91.94,20.40,97.79,79.60,N/A,Published (SalUn Table A2) — MIA not reported by authors
+l1-sparse,CIFAR-10,0,92.29,0.00,97.92,100.00,N/A,Published (SalUn Table A2) — MIA not reported by authors
+SalUn (ICLR 2024),CIFAR-10,0,93.51,0.72,99.40,99.28,N/A,Published (SalUn Table A2) — no AUROC-based MIA reported
+PURGE (kl_retain),CIFAR-10,0,84.47,8.38,96.31,91.62,0.496,Ours — near-perfect privacy (MIA close to 0.5)
+PURGE (ga — Run 1),CIFAR-10,0,89.28,52.56,97.00,47.44,0.250,Ours — GA objective; FA too high (under-forgets)
+PURGE (ga — Run 2),CIFAR-10,0,80.77,0.02,93.70,99.98,0.243,Ours — GA with more epochs; over-forgets and damages RA
+PURGE (kl_retain),PathMNIST,0,74.35,7.28,98.45,92.72,0.545,Ours — Adipose tissue class
+PURGE (kl_retain),PathMNIST,1,79.35,9.85,98.33,90.15,0.614,Ours — Background class; highest MIA among PathMNIST
+PURGE (kl_retain),PathMNIST,2,89.30,9.47,98.93,90.53,0.369,Ours — Debris class; best TA among PathMNIST
+PURGE (kl_retain),PathMNIST,3,83.20,10.58,99.00,89.42,0.425,Ours — Lymphocytes class
+PURGE (kl_retain),PathMNIST,4,77.49,9.44,98.53,90.56,0.517,Ours — Mucus class
+PURGE (kl_retain),PathMNIST,5,84.36,9.45,98.55,90.55,0.501,Ours — Smooth Muscle class; MIA near-ideal
+PURGE (kl_retain),PathMNIST,6,80.93,9.87,98.81,90.13,0.594,Ours — Normal Mucosa class
+PURGE (kl_retain),PathMNIST,7,87.16,10.71,99.39,89.29,0.521,Ours — Stroma class; highest RA among PathMNIST
+PURGE (kl_retain),PathMNIST,8,75.96,7.12,98.74,92.88,0.557,Ours — Epithelium class; lowest FA among PathMNIST
+PURGE (kl_retain),MNIST,0,89.99,1.99,99.82,98.01,0.512,Ours — digit 0; strongest forgetting (FA=1.99%)
+PURGE (kl_retain),MNIST,1,88.30,5.38,99.87,94.62,0.653,Ours — digit 1; MIA outlier (0.653) likely due to simple digit structure
+PURGE (kl_retain),MNIST,2,89.99,7.67,99.87,92.33,0.510,Ours — digit 2
+PURGE (kl_retain),MNIST,3,90.77,9.28,99.88,90.72,0.510,Ours — digit 3
+PURGE (kl_retain),MNIST,4,90.68,6.09,99.87,93.91,0.511,Ours — digit 4
+PURGE (kl_retain),MNIST,5,91.24,7.38,99.88,92.62,0.521,Ours — digit 5
+PURGE (kl_retain),MNIST,6,90.97,7.06,99.85,92.94,0.495,Ours — digit 6; best MIA (0.495 closest to ideal)
+PURGE (kl_retain),MNIST,7,90.25,8.14,99.90,91.86,0.522,Ours — digit 7
+PURGE (kl_retain),MNIST,8,90.66,9.38,99.84,90.62,0.512,Ours — digit 8
+PURGE (kl_retain),MNIST,9,90.01,5.31,99.91,94.69,0.524,Ours — digit 9; highest RA (99.91%)
+PURGE (kl_retain),SVHN,0,89.50,3.62,97.32,96.38,0.524,Ours — strong forgetting on noisy real-world digit dataset
+PURGE (kl_retain),STL10,0,84.95,8.80,99.07,91.20,0.479,Ours — small dataset (5K train); RA=99.07% despite limited data
+PURGE (kl_retain — no stopping),PathMNIST,0,72.65,0.00,96.75,100.00,0.001,Ours — before intra-epoch stopping; over-forgot completely

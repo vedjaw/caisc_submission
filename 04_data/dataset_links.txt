@@ -1,0 +1,30 @@
+CIFAR-10
+  - Auto-downloaded by torchvision.datasets.CIFAR10(download=True)
+  - Official page: https://www.cs.toronto.edu/~kriz/cifar.html
+  - License: Research use
+
+PathMNIST (MedMNIST v2)
+  - Auto-downloaded by medmnist.PathMNIST(download=True)
+  - Official page: https://medmnist.com/
+  - Paper: Yang et al., "MedMNIST v2: A Large-Scale Lightweight Benchmark for 2D and 3D Biomedical Image Classification", Scientific Data, 2023
+  - Direct download (if auto-download fails):
+    wget https://zenodo.org/records/10519652/files/pathmnist.npz
+  - License: CC BY 4.0
+
+MNIST
+  - Auto-downloaded by torchvision.datasets.MNIST(download=True)
+  - Official page: http://yann.lecun.com/exdb/mnist/
+  - Paper: LeCun et al., "Gradient-Based Learning Applied to Document Recognition", 1998
+  - License: Research use
+
+SVHN
+  - Auto-downloaded by torchvision.datasets.SVHN(download=True)
+  - Official page: http://ufldl.stanford.edu/housenumbers/
+  - Paper: Netzer et al., "Reading Digits in Natural Images with Unsupervised Feature Learning", NeurIPS Workshop, 2011
+  - License: Research use (non-commercial)
+
+STL10
+  - Auto-downloaded by torchvision.datasets.STL10(download=True)
+  - Official page: https://cs.stanford.edu/~acoates/stl10/
+  - Paper: Coates et al., "An Analysis of Single-Layer Networks in Unsupervised Feature Learning", AISTATS, 2011
+  - License: Research use

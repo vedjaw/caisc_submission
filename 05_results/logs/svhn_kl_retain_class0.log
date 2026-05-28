@@ -1,0 +1,69 @@
+Loading svhn...
+  Forget set: 4948 | Retain set: 68309
+  Forget-class test set: 1744 samples (for MIA)
+
+Loading model: resnet18
+  Loaded: ./checkpoints/base_svhn_resnet18.pth
+
+=== Before Unlearning ===
+  Test Accuracy: 95.69% (24909/26032)
+  Forget Accuracy (should DROP): 97.86% (4842/4948)
+  Retain Accuracy (should STAY): 97.28% (66448/68309)
+
+============================================================
+ PURGE: Projected Unlearning via Retain-Guided Erasure
+============================================================
+  Monitor layers : ['layer3', 'layer4', 'avgpool']
+  Epochs         : 15
+  LR             : 0.0005
+  Rep weight (λ) : 0.05
+  KD weight  (β) : 2.0
+  Temperature    : 4.0
+  Forget obj.    : kl_retain
+  Forget gate    : 0.0
+  Computing retain confusion distribution...
+  Retain confusion dist: [0.0033804012928158045, 0.1989312469959259, 0.15240998566150665, 0.12662918865680695, 0.10748887062072754]... (top-5 of 10 classes)
+  Initial retain loss : 0.0973
+  Retain loss budget  : 0.4866 (5.0×)
+  Epoch 1/15: 100%|████████████████████████████████████████████████████████████████████████████████████| 39/39 [00:47<00:00,  1.22s/it, F=1.463, G=0/39, R=0.460]
+  → Forget CE: 0.4394 | Retain: 0.0944 | Rep: 0.2147 | Proj: 97% | Gate: 0% | FA: 51.4%
+  Epoch 2/15:  49%|████████████████████████████████████████▉                                           | 19/39 [00:16<00:12,  1.58it/s, F=2.603, G=0/20, R=0.853]
+  [batch 20] FA 3.6% <= target 10.0% — stopping mid-epoch.
+  Epoch 2/15:  49%|████████████████████████████████████████▉                                           | 19/39 [00:21<00:22,  1.11s/it, F=2.603, G=0/20, R=0.853]
+  → Forget CE: 2.1200 | Retain: 0.1050 | Rep: 0.1063 | Proj: 100% | Gate: 0% | FA: 3.4%
+  ✓ FA 3.4% ≤ target 10.0% — forgetting complete, will stop.
+  FA target reached — stopping at epoch 2.
+
+  Unlearning completed in 608.4s
+
+=== After PURGE Unlearning ===
+  Test Accuracy  (TA): 89.50% (23298/26032)
+  Forget Accuracy (FA — want LOW): 3.62% (179/4948)
+  Retain Accuracy (RA — want HIGH): 97.32% (66480/68309)
+
+  Unlearning Accuracy (UA = 100−FA): 96.38%
+
+=== Membership Inference Attack ===
+  MIA (loss AUROC) : 0.6219
+  MIA (conf AUROC) : 0.4256
+  MIA (average)    : 0.5238  (target ≈ 0.5)
+  (forget-class train vs forget-class test, 4948 vs 1744 samples)
+
+=== Representation-Level Verification ===
+  Feature cosine sim : 0.7583  (lower = more erased)
+  Feature L2 dist    : 15.8913  (higher = more erased)
+
+============================================================
+ PURGE — Results Summary
+============================================================
+  Test Accuracy      (TA) : 89.50%
+  Forget Accuracy    (FA) : 3.62%
+  Retain Accuracy    (RA) : 97.32%
+  Unlearning Accuracy(UA) : 96.38%
+  MIA (AUROC)             : 0.5238  (target ≈ 0.5)
+  Feature Cosine Sim      : 0.7583
+  Avg Projection Rate     : 99%
+  Avg Gate Rate           : 0%
+  Final Epoch FA          : 3.4%
+  Wall-clock Time         : 608.4s
+============================================================

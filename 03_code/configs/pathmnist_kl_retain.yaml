@@ -1,0 +1,25 @@
+# pathmnist config (downloads slow so be patient)
+dataset: pathmnist
+model: resnet18
+forget_type: class
+forget_class: 0
+
+epochs: 15
+lr: 5e-4
+batch_size: 128
+weight_decay: 5e-4
+
+forget_objective: kl_retain
+rep_weight: 0.05       
+kd_weight: 2.0         
+temperature: 4.0       
+max_grad_norm: 1.0     
+
+forget_gate: 0
+retain_budget_factor: 5.0
+fa_target: null        # ≈11.1% since pathmnist has 9 classes
+fa_check_freq: 50
+
+data_dir: ./data
+save_dir: ./checkpoints
+checkpoint: ./checkpoints/base_pathmnist_resnet18.pth
