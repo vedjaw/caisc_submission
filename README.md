@@ -36,9 +36,6 @@ On top of that, we found that the standard "push forget outputs to uniform" targ
 
 ```
 5_Selective_Model_Unlearning_for_Data_Privacy_in_Neural_Networks/
-├── 02_report/
-│   ├── latex_sources.zip
-│   └── final_report.pdf
 ├── 03_code/
 │   ├── README.md                   # Full setup + run instructions
 │   ├── requirements.txt            # Python dependencies
